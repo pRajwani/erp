@@ -1,0 +1,16 @@
+// shared css for the login and signup page
+@import '../login/login.component.scss';
+
+.image {
+    opacity: 0;
+    width: 100%;
+}
+
+small {
+    top: 49px;
+    left: 80px;
+    position: absolute;
+}
+.file {
+    position: relative;
+}

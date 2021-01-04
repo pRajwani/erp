@@ -1,0 +1,39 @@
+.row {
+    background-color: rgba(0, 0, 0, 0.03);
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+}
+.card-header {
+    background-color: white !important;
+    text-align: center;
+}
+.card {
+    border: none !important;
+    margin-top: 3%;
+    border-radius: 4px;
+}
+.table th,
+.table td {
+    border-top: none !important;
+}
+
+.table thead th {
+    border-bottom: none;
+}
+
+.table thead,
+.table tr,
+.table tbody {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+select {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    width: fit-content;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}

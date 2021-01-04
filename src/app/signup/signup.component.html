@@ -1,0 +1,85 @@
+<div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>Create New Account</h1>
+            <form novalidate [formGroup]="signupForm" #signupform="ngForm" role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input
+                            formControlName="firstname"
+                            [(ngModel)]="userData.firstname"
+                            [placeholder]="'First Name' | translate"
+                            class="form-control input-underline input-lg"
+                            type="text"
+                        />
+                        <p *ngIf='signupformErrors.firstname' class="alert">{{signupformErrors.firstname}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                            formControlName="lastname"
+                            [(ngModel)]="userData.lastname"
+                            [placeholder]="'Last Name' | translate"
+                            class="form-control input-underline input-lg"
+                            type="text"
+                        />
+                        <p *ngIf='signupformErrors.lastname' class="alert">{{signupformErrors.lastname}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                            formControlName="phone"
+                            [(ngModel)]="userData.phone"
+                            [placeholder]="'Phone Number' | translate"
+                            class="form-control input-underline input-lg"
+                            type="number"
+                        />
+                        <p *ngIf='signupformErrors.phone' class="alert">{{signupformErrors.phone}}</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input
+                        formControlName="username"
+                        [(ngModel)]="userData.username"
+                        [placeholder]="'Email' | translate"
+                        class="form-control input-underline input-lg"
+                        type="email"
+                        />
+                        <p *ngIf='signupformErrors.username' class="alert">{{signupformErrors.username}}</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input
+                        formControlName="password"
+                        [(ngModel)]="userData.password"
+                        [placeholder]="'Password' | translate"
+                        class="form-control input-underline input-lg"
+                        type="password"
+                        />
+                        
+                        <p *ngIf='signupformErrors.password' class="alert">{{signupformErrors.password}}</p>
+                    </div>
+                    <div class="form-group file">
+                            <input
+                            (change)='uploadImage($event)'
+                            formControlName="image"
+                            class="image form-control input-underline input-lg"
+                            type="file"
+                            observeFiles
+                        />
+                        <i class="fa fa-upload fa-2x">
+                        &nbsp;Select Image to upload</i>
+                          
+                        <!-- <img *ngIf="userData.image" src="userData.image" alt="userData.image" /> -->
+                    </div>
+                    
+                </div>
+                <button [disabled]="signupForm.invalid" (click)="createUser()" class="btn rounded-btn">
+                    {{ 'Register' | translate }}</button
+                >&nbsp;
+                <a [routerLink]="['/login']" class="btn rounded-btn">{{ 'Log in' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</div>

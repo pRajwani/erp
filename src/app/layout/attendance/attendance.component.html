@@ -1,0 +1,31 @@
+<div class=" main flex-container">
+    <div class="row">
+        <div ></div><div class="col-xl-4"><input (change)='changeMonth($event)' [(ngModel)]='todaydate' type="date"></div><div class="col-xl-8"></div>
+        <div class="col-xl-5"></div><div class="col-xl-4"> <h1>{{month}}</h1></div><div class="col-xl-3"></div>
+        <div class="col-xl-2"></div>
+        <div class="card">
+            <table class="table table-sm">
+                <thead >
+                    <tr>
+                        <th>Employees</th>
+                        <th class="header" *ngFor='let day of days'><small *ngIf='day<limitDate' > {{day}}</small></th>
+                    </tr>
+                </thead>
+                <tbody class="body" >
+                    <tr class="attendance" *ngFor='let employe of currMonthDetails; let i=index;'>  
+                        <td >{{employe.empl}} </td>
+                        <td  class="attendance" *ngFor='let day of employe.attendance; let j=index;'>
+                            <select  class="select" (change)='changeAttendance($event,j,employe.empl)'>
+                            <option selected hidden >{{day}}</option>
+                            <option  *ngIf='day!==Present' value="Present" >Present</option>
+                            <option   *ngIf='day!==Absent'  value="Absent" >Absent</option>
+                            <option  *ngIf='day!==halfDay' value="halfDay" >halfDay</option>
+                        </select></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button (click)="downloadCSV()" class="btn-primary">Download CSV</button>
+    <button (click)="display()" class="btn-primary">Get</button>
+</div>

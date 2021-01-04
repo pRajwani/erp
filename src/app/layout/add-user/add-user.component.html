@@ -1,0 +1,281 @@
+<app-page-header [heading]="'Create new user'" [icon]="'fa-user'"></app-page-header>
+<div class="row">
+    <div class="col-xl-12">
+        <div (click)='hidePersonal()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Personal Details </li>
+        </div>
+                <div *ngIf='personalDetail' class="row">
+
+                        <div class="col-xl-2">First Name</div>
+                        <div class="col-xl-3" >
+                            <fieldset class="form-group">
+                                <input  [(ngModel)]='personalDetails.firstname' readonly placeholder="First Name" type="text" class="form-control" required />
+                            </fieldset>
+                        </div>
+                        <div class="col-xl-2">Last Name</div>
+                        <div class="col-xl-3" >
+                            <fieldset class="form-group">
+                                <input  [(ngModel)]='personalDetails.lastname' readonly placeholder="Last Name" type="text" class="form-control" required/>
+                            </fieldset>
+                        </div>
+                        <div class="col-xl-1"></div>
+                        <div class="col-xl-2">
+                            Phone Number
+                        </div>
+                        <div class="col-xl-3">
+                            <fieldset class="form-group">
+                                <input  [(ngModel)]='personalDetails.phone' readonly type="number" class="form-control" placeholder="Phone number" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-xl-2">
+                            Email
+                        </div>
+                        <div class="col-xl-3">
+                            <fieldset class="form-group">
+                                <input  [(ngModel)]='personalDetails.email' readonly type="email" class="form-control" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-xl-2"></div>
+                </div>
+
+        <!-- Personal Details -->
+        <div (click)='hideOther()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Other Details </li>
+        </div>
+                <form [formGroup]='otherDetailForm' *ngIf='otherDetail' class="row">
+                    <div class="col-xl-2">
+                        Aadhar Number
+                    </div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <input formControlName = 'aadhar'   placeholder="Aadhar Number" type="number" class="form-control" maxlength="12" minlength="12">
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-2">
+                        PAN Number
+                    </div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <input formControlName = 'pan'   placeholder="PAN Number" type="text" class="form-control" maxlength="11" minlength="11">
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-2"></div>
+                    <div class="col-xl-2">
+                        Address
+                    </div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <textarea formControlName = 'address'   placeholder="Address" class="form-control" required></textarea>
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-2">Date of Joining</div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <input formControlName = 'doj'  type="date"  placeholder="Date of Joining" class="form-control" required>
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-1"></div>
+                    <div class="col-xl-2">Status</div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <select formControlName='status' class="form-control" >
+                                <option value="current">Current</option>
+                                <option value="ex">Ex</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-2">Designation</div>
+                    <div class="col-xl-3">
+                        <fieldset class="form-group">
+                            <input formControlName = 'designation' [(ngModel)]='otherDetails.designation' type="text"  placeholder="Designation" class="form-control" required>
+                        </fieldset>
+                    </div>
+                </form>
+
+        <!-- Family Details -->
+        <div (click)='hideFamily()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Family Details </li>
+        </div>
+        <div  *ngIf='familyDetail' class="row">
+            <div class="col-xl-2">
+                Father's Name
+            </div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.fathername'  placeholder="Father's Name" type="text" class="form-control" required >
+                </fieldset>
+            </div>
+            <div class="col-xl-2">
+                Mother's Name
+            </div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.mothername'  placeholder="Mother's Name" type="text" class="form-control" required >
+                </fieldset>
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-2">
+                Father's Occupation
+            </div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.foccupation'  type="text" class="form-control" placeholder="Father's Occupation">
+                </fieldset>
+            </div>
+            <div class="col-xl-2">
+                Mother's Occupation
+            </div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.moccupation'  type="text" class="form-control" placeholder="Mother's Occupation">
+                </fieldset>
+            </div>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-2">
+                Emergency Contact
+            </div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.emergency1'  type="tel" placeholder="Contact-1" class="form-control" required>
+                </fieldset>
+            </div>
+            <div class="col-xl-2"></div>
+            <div class="col-xl-3">
+                <fieldset class="form-group">
+                    <input [(ngModel)]='familyDetails.emergency2'  type="tel" placeholder="Contact-2" class="form-control" >
+                </fieldset>
+            </div>
+        </div>
+        <!-- Education Details -->
+        <div (click)='hideEducation()' class="breadcrumb">
+            <li class="breadcrumb-item active">Education Details </li>
+        </div>
+        <div *ngIf='educationDetail' class="row">
+            <div class="card mb-3">
+                <div class="card-header">Education</div>
+                <table class="card-body table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Name of Organization</th>
+                            <th>Stream</th>
+                            <th>Year of Passing</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">10th</th>
+                            <td><input [(ngModel)]='educationDetails[0].organization' type="text" placeholder="Organization" required></td>
+                            <td><input [(ngModel)]='educationDetails[0].stream' type="text" placeholder="Stream" ></td>
+                            <td><input [(ngModel)]='educationDetails[0].yearofPassing' type="text" placeholder="Year of Passing" required></td>
+                            <td><input [(ngModel)]='educationDetails[0].result' type="text" placeholder="Result" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12th</th>
+                            <td><input [(ngModel)]='educationDetails[1].organization' type="text" placeholder="Organization" required></td>
+                            <td><input [(ngModel)]='educationDetails[1].stream' type="text" placeholder="Stream" required></td>
+                            <td><input [(ngModel)]='educationDetails[1].yearofPassing' type="text" placeholder="Year of Passing" required></td>
+                            <td><input [(ngModel)]='educationDetails[1].result' type="text" placeholder="Result" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Graduation</th>
+                            <td><input [(ngModel)]='educationDetails[2].organization' type="text" placeholder="Organization" required></td>
+                            <td><input [(ngModel)]='educationDetails[2].stream' type="text" placeholder="Stream" required></td>
+                            <td><input [(ngModel)]='educationDetails[2].yearofPassing' type="text" placeholder="Year of Passing" required></td>
+                            <td><input [(ngModel)]='educationDetails[2].result' type="text" placeholder="Result" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PG</th>
+                            <td><input [(ngModel)]='educationDetails[3].organization' type="text" placeholder="Organization"></td>
+                            <td><input [(ngModel)]='educationDetails[3].stream' type="text" placeholder="Stream"></td>
+                            <td><input [(ngModel)]='educationDetails[3].yearofPassing' type="text" placeholder="Year of Passing"></td>
+                            <td><input [(ngModel)]='educationDetails[3].result' type="text" placeholder="Result"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Experience Details -->
+            <div (click)='hideExperience()' class="breadcrumb">
+                <li  class="breadcrumb-item active">Experience</li>
+            </div>
+            <div *ngIf='experienceDetail' class="row">
+                <div class="card mb-3">
+                    <div class="card-header">Recent Organizations</div>
+                    <table class=" card-body table table-sm">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name of Company</th>
+                                <th>Designation</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Salary</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dynamic of experienceTable; let i = index; ">
+                                <td (click)='deleteExperience(i)'>
+                                    <i class="fa fa-trash fa-2x"></i>
+                                </td>
+                                <td><input [(ngModel)]='experienceTable[i].company' [ngModelOptions]="{standalone: true}" type="text" placeholder="Company"></td>
+                                <td><input [(ngModel)]='experienceTable[i].designation' [ngModelOptions]="{standalone: true}" type="text" placeholder="Designation"></td>
+                                <td><input [(ngModel)]='experienceTable[i].from' [ngModelOptions]="{standalone: true}" type="date" placeholder="From"></td>
+                                <td><input [(ngModel)]='experienceTable[i].to' [ngModelOptions]="{standalone: true}" type="date" placeholder="To"></td>
+                                <td><input [(ngModel)]='experienceTable[i].salary' [ngModelOptions]="{standalone: true}" type="number" placeholder="Salary"></td>
+                                <td><input [(ngModel)]='experienceTable[i].contact' [ngModelOptions]="{standalone: true}" type="tel" placeholder="Contact"></td>
+                            </tr>
+                            <tr>
+                                <td (click)="addExperience(i)">
+                                    <i class="fa fa-plus fa-2x"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <!-- Reference Details -->
+            <div (click)='hideReference()' class="breadcrumb">
+                <li class="breadcrumb-item active">References</li>
+            </div>
+            <div *ngIf='referenceDetail' class="row">
+                <div class="card mb-3">
+                    <div class="card-header">References</div>
+                    <table class="card-body table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let row of referenceTable; let i=index'>
+                                <td (click)='deleteReference(i)'>
+                                    <i class="fa fa-trash fa-2x"></i>
+                                </td>
+                                <td><input [(ngModel)]='referenceTable[i].name' type="text" placeholder="Name"></td>
+                                <td><input [(ngModel)]='referenceTable[i].contact' type="tel" placeholder="Contact"></td>
+                                <td><input [(ngModel)]='referenceTable[i].email' type="email" placeholder="Email"></td>
+                            </tr>
+                            <tr>
+                                <td (click)='addReference(i)'>
+                                    <i class="fa fa-plus fa-2x"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+    <div class="col-xl-12">
+        <div class="row">
+        <div class="col-xl-5"></div>
+        <div class="col-xl-2"><button (click)='employeeDetails()' [disabled]='otherDetailForm.invalid'  type="submit" class="btn btn-primary">Submit</button></div>
+        <div class="col-xl-5"></div>
+    </div>
+    </div>
+</div>

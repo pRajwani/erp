@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-xl-12">
+        <h2 class="page-header">
+            Single Employee Details
+        </h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa fa-dashboard"></i> <a [routerLink]="['/dashboard']" href="Javascript:void(0)">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active"><i class="fa fa-user"></i> Single Employee Details</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="col-xl-12">
+            <img src="employee.personalDetails.image" alt='employee.personalDetails.image'>
+            <h2 class="text-center">{{employee.personalDetails.firstname}}&nbsp;{{employee.personalDetails.lastname}}</h2>
+        </div>
+        <div class="col-xl-12" (click)='hidePersonal()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Personal Details </li>
+        </div>
+        <div  *ngIf='personalDetail' class="row">
+            <div class="col-xl-4">Email : {{employee.personalDetails.username}}</div>
+            <div class="col-xl-4">Phone No. : {{employee.personalDetails.phone}}</div>
+        </div>
+        <!-- Other Detials -->
+        <div class="col-xl-12" (click)='hideOther()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Other Details </li>
+        </div>
+        <div  *ngIf='otherdetail' class="row">
+            <div class="col-xl-4">Designation : {{employee.otherDetails.designation}}</div>
+            <div *ngIf='employee.otherDetails.aadhar' class="col-xl-4">Aadhar No. : {{employee.otherDetails.aadhar}}</div>
+            <div *ngIf='employee.otherDetails.pan' class="col-xl-4">PAN No. : {{employee.otherDetails.pan}}</div>
+            <div class="col-xl-4">Address : {{employee.otherDetails.address}}</div>
+            <div class="col-xl-4">Status : {{employee.otherDetails.status}}</div>
+            <div class="col-xl-4">Date of Joininig : {{employee.otherDetails.doj}}</div>
+        </div>
+        <!-- Family Detials -->
+        <div (click)='hideFamily()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Family Details </li>
+        </div>
+        <div  *ngIf='familyDetail' class="row">
+                    <div class="col-xl-4">Father's Name : {{employee.familyDetails.fathername}}</div>
+                    <div class="col-xl-4">Mother's Name : {{employee.familyDetails.mothername}}</div>
+                    <div class="col-xl-4">Father's Occupation : {{employee.familyDetails.foccupation}}</div>
+                    <div class="col-xl-4">Mother's Occupation : {{employee.familyDetails.moccupation}}</div>
+                    <div class="col-xl-4">Contact1 : {{employee.familyDetails.emergency1}}</div>
+                    <div class="col-xl-4">Contact2 : {{employee.familyDetails.emergency2}}</div>       
+        </div>
+        <div (click)='hideEducation()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Education Details </li>
+        </div>
+        <div  *ngIf='educationDetail' class="col-xl-12"> 
+            <div class="row" *ngFor='let education of employee.educationDetails'>
+                    <div class="col-xl-3">Course : {{education.course}}</div>
+                    <div class="col-xl-3">Organization : {{education.organization}}</div>
+                    <div class="col-xl-3">Stream : {{education.stream}}</div>
+                    <div class="col-xl-3">Year of Passing : {{education.yearofpassing}}</div>
+                    <div class="col-xl-3">Result : {{education.result}}</div>
+            </div>
+        </div>
+        <div (click)='hideExperience()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Experience Details </li>
+        </div>
+        <div  *ngIf='experienceDetail' class="col-xl-12" >
+            <div class="row" *ngFor='let experience of employee.experiences'>
+                    <div class="col-xl-2">Organization : {{experience.organization}}</div>
+                    <div class="col-xl-2">Designation : {{experience.designation}}</div>
+                    <div class="col-xl-2">From : {{experience.from}}</div>
+                    <div class="col-xl-2">To : {{experience.to}}</div>
+                    <div class="col-xl-2">Salary : {{experience.salary}}</div>
+                    <div class="col-xl-2">Contact : {{experience.contact}}</div>
+            </div>
+        </div>
+        <div (click)='hideReference()' class="breadcrumb">
+            <li  class="breadcrumb-item active">Reference Details </li>
+        </div>
+        <div  *ngIf='referenceDetail' class="col-xl-12" >
+            <div class="row" *ngFor='let reference of employee.reference'>
+                    <div class="col-xl-4">Name : {{employee.reference.name}}</div>
+                    <div class="col-xl-4">Contact : {{employee.reference.contact}}</div>
+                    <div class="col-xl-4">Email : {{employee.reference.email}}</div>
+            </div>
+        </div>
+</div>
+</div>

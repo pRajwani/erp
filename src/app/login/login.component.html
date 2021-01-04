@@ -1,0 +1,40 @@
+<div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>Login to continue...</h1>
+            <form  novalidate [formGroup]='loginForm' #loginform='ngForm' role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input
+                            formControlName='username'
+                            [(ngModel)]='loginData.username'
+                            [placeholder]="'Email' | translate"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            class="form-control input-underline input-lg"
+                            type="email"
+                            required
+                        />
+                        <p *ngIf='loginformErrors.username' class="alert">{{loginformErrors.username}}</p>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                        formControlName="password"
+                            [(ngModel)]='loginData.password'
+                            [placeholder]="'Password' | translate"
+                            class="form-control input-underline input-lg"
+                            type="password"
+                        />
+                        <p *ngIf='loginformErrors.password' class="alert">{{loginformErrors.password}}</p>
+                    </div>
+                </div>
+                <button (click)="loginUser()" [disabled]="loginForm.invalid" class="btn rounded-btn">{{
+                    'Log in' | translate
+                }}</button>
+                &nbsp;
+                <a [routerLink]="['/signup']" class="btn rounded-btn">{{ 'Register' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.table {
+    background-color: white;
+    font-family: monospace;
+    border-radius: 2%;
+    margin-top: 2%;
+}
+.attendance {
+    border: 1px solid #d7d8da;
+}
+.select {
+    border: none !important;
+}
+.main {
+    height: 100%;
+    background-color: rgb(246, 248, 250);
+}
+.header {
+    text-align: center;
+}
+.body {
+    margin-left: 10px;
+}
+.table thead,
+.table th,
+.table tbody,
+.table tr {
+    border: none !important;
+    font-size: large;
+}
+
+.table td {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-right: none;
+}
+
+.table tr :hover {
+    background-color: rgb(239, 240, 241);
+}
